@@ -29,6 +29,9 @@ for row in cursor:
    base64_messagedd = last_decrypt(row[3])
    decs = base(base64_messagedd)
    print ("causes = ", decs)
+   conn.execute("UPDATE BMW set definition =?  where ID =? ", (dec,row[0]))
+   conn.execute("UPDATE BMW set causes =?  where ID =? ", (decs, row[0]))
+   conn.commit()
 
 
 conn.close()
